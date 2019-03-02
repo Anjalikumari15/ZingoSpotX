@@ -2,7 +2,7 @@ package POJOs;
 
 public class ReturnDetails {
     private String barcode, mrp, batchno, mfg, exp, created_at, reason, pname,
-            retailerId, distributorId;
+            retailerId, distributorId, ret1, ret2;
 
     public String getBarcode() {
         return barcode;
@@ -82,5 +82,21 @@ public class ReturnDetails {
 
     public void setDistributorId(String distributorId) {
         this.distributorId = distributorId;
+    }
+
+    public String getRet1() {
+        return ret1;
+    }
+
+    public void setRet1(String ret1) {
+        this.ret1 = ret1;
+    }
+
+    public String getRet2() {
+        return ret2;
+    }
+
+    public void setRet2(String ret2) {
+        this.ret2 = ret2;
     }
 }
