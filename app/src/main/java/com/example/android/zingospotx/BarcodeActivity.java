@@ -117,11 +117,11 @@ public class BarcodeActivity extends AppCompatActivity implements ZXingScannerVi
     public void handleResult(final Result result) {
         final String scanResult = result.getText();
         Log.d("pikachu", "handleResult: "+result);
-        FirebaseApp.initializeApp(this);
+        /*FirebaseApp.initializeApp(this);
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance()
                 .getReference().child("note");
         databaseReference.push().setValue(result.toString());
-        Log.d("pikachu", "handleResult: "+databaseReference.getKey());
+        Log.d("pikachu", "handleResult: "+databaseReference.getKey());*/
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Scan Result");

@@ -1,10 +1,14 @@
 package com.example.android.zingospotx;;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
         import android.app.Activity;
         import android.content.Intent;
         import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
         import android.widget.AdapterView;
@@ -17,6 +21,13 @@ import android.widget.Toast;
         import android.widget.AdapterView.OnItemSelectedListener;
 
         import com.example.android.zingospotx.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import POJOs.ReturnDetails;
 
 public class MainActivity extends Activity implements OnItemSelectedListener{
     Button b1;
@@ -28,11 +39,17 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         setContentView(R.layout.activity_main);
 
 
-        Intent in = getIntent();
+
+
+        final Intent in = getIntent();
+
+
         Log.d("abc", "onCreate: "+in);
         Log.d("abc", "onCreate: "+in.toString());
 
-        EditText prod_name,batch_no,exp,mfg,mrp;
+
+
+        final EditText prod_name,batch_no,exp,mfg,mrp;
         prod_name = (EditText)findViewById(R.id.product_name);
         batch_no = (EditText)findViewById(R.id.batch_no);
         exp = (EditText)findViewById(R.id.exp_date);
@@ -41,17 +58,106 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 
         TextView tvbarcode = (TextView)findViewById(R.id.tvBarcode);
 
-        String prodname = prod_name.getText().toString();
-        String batchno = batch_no.getText().toString();
-        String expdate = exp.getText().toString();
-        String mfgdate = mfg.getText().toString();
-        String mrprice = mrp.getText().toString();
+        if(in.hasExtra("barcode")) {
+            tvbarcode.setText(in.getStringExtra("barcode"));
+        }
+
+
+
 
         Button b = (Button)findViewById(R.id.submit);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    Log.d("abc", "onClick: has extra");
+                    String prodname = prod_name.getText().toString();
+                    final String batchno = batch_no.getText().toString();
+                    final String expdate = exp.getText().toString();
+                    final String mfgdate = mfg.getText().toString();
+                    String mrprice = mrp.getText().toString();
 
+                    final DatabaseReference dbReference = FirebaseDatabase.getInstance()
+                            .getReference();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                    String currentDateandTime = sdf.format(new Date());
+                    ReturnDetails rDetails = new ReturnDetails();
+                    rDetails.setBarcode(in.getStringExtra("barcode"));
+                    rDetails.setBatchno(batchno);
+                    rDetails.setCreated_at(currentDateandTime);
+                    rDetails.setExp(expdate);
+                    rDetails.setMfg(mfgdate);
+                    rDetails.setMrp(mrprice);
+                    rDetails.setPname(prodname);
+                    rDetails.setReason("damaged");
+                    rDetails.setRetailerId("r1");
+                    rDetails.setDistributorId("d1");
+                    dbReference.child("Returns").push().setValue(rDetails);
+
+                    Toast.makeText(MainActivity.this, "Items added to the cart",
+                            Toast.LENGTH_SHORT).show();
+
+                /*if(in.hasExtra("barcode")) {
+                    Log.d("abc", "onClick: submit has extra");
+
+                    dbReference.child("temp").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Log.d("abc", "onDataChange: ");
+                            for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                                ReturnDetails rd = (ReturnDetails) dataSnapshot1.getValue();
+                                Log.d("abc", "onDataChange:  yayye"+rd);
+                                dbReference.child("Returns").push().setValue(rd);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                    dbReference.child("temp").removeValue();
+
+                }*/
+
+            }
+
+        });
+
+        Button btnScan = findViewById(R.id.scanbarcode);
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("abc", "onClick: ");
+                if(in.hasExtra("barcode")) {
+                    Log.d("abc", "onClick: has extra");
+                    String prodname = prod_name.getText().toString();
+                    final String batchno = batch_no.getText().toString();
+                    final String expdate = exp.getText().toString();
+                    final String mfgdate = mfg.getText().toString();
+                    String mrprice = mrp.getText().toString();
+
+                    DatabaseReference dbReference = FirebaseDatabase.getInstance()
+                            .getReference();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                    String currentDateandTime = sdf.format(new Date());
+                    ReturnDetails rDetails = new ReturnDetails();
+                    rDetails.setBarcode(in.getStringExtra("barcode"));
+                    rDetails.setBatchno(batchno);
+                    rDetails.setCreated_at(currentDateandTime);
+                    rDetails.setExp(expdate);
+                    rDetails.setMfg(mfgdate);
+                    rDetails.setMrp(mrprice);
+                    rDetails.setPname(prodname);
+                    rDetails.setReason("damaged");
+                    rDetails.setRetailerId("r1");
+                    rDetails.setDistributorId("d1");
+                    Log.d("abc", "onClick: data pushed");
+                    Log.d("abc", "onClick: "+dbReference);
+                    dbReference.child("Returns").push().setValue(rDetails);
+
+                }
+                Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -62,7 +168,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
-        b1=findViewById(R.id.scanbarcode);
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("Choose Retailers");
@@ -86,13 +191,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,BarcodeActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
     @Override
