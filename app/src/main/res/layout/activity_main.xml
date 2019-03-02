@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/lemon"
     android:orientation="vertical">
 
     <Spinner
@@ -14,6 +15,7 @@
         android:layout_height="wrap_content"
         android:prompt="@string/ChooseRetailers"/>
 
+
     <Button
         android:id="@+id/scanbarcode"
         android:layout_width="wrap_content"
@@ -21,5 +23,52 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:text="Scan Barcode"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:id="@+id/tvBarcode"
+        android:text = "Barcode"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter product name"
+        android:id="@+id/product_name"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Batch no"
+        android:id="@+id/batch_no"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Manufacturing date"
+        android:id="@+id/mfg_date"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Expiry date"
+        android:id="@+id/exp_date"
+        />
+    //spinner for reason
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter MRP"
+        android:id="@+id/mrp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id = "@+id/submit"
+        android:text = "SUBMIT"
+        />
+
+
 
 </LinearLayout>

@@ -10,8 +10,10 @@ import android.view.View;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
-        import android.widget.Spinner;
-        import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
         import android.widget.AdapterView.OnItemSelectedListener;
 
         import com.example.android.zingospotx.R;
@@ -25,9 +27,33 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Intent in = getIntent();
         Log.d("abc", "onCreate: "+in);
         Log.d("abc", "onCreate: "+in.toString());
+
+        EditText prod_name,batch_no,exp,mfg,mrp;
+        prod_name = (EditText)findViewById(R.id.product_name);
+        batch_no = (EditText)findViewById(R.id.batch_no);
+        exp = (EditText)findViewById(R.id.exp_date);
+        mfg = (EditText)findViewById(R.id.mfg_date);
+        mrp = (EditText)findViewById(R.id.mrp);
+
+        TextView tvbarcode = (TextView)findViewById(R.id.tvBarcode);
+
+        String prodname = prod_name.getText().toString();
+        String batchno = batch_no.getText().toString();
+        String expdate = exp.getText().toString();
+        String mfgdate = mfg.getText().toString();
+        String mrprice = mrp.getText().toString();
+
+        Button b = (Button)findViewById(R.id.submit);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
 
