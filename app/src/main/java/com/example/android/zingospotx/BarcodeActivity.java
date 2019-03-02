@@ -128,14 +128,9 @@ public class BarcodeActivity extends AppCompatActivity implements ZXingScannerVi
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                scannerView.resumeCameraPreview(BarcodeActivity.this);
-            }
-        });
-        builder.setNeutralButton("Visit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));
-                startActivity(intent);
+                Intent in = new Intent(BarcodeActivity.this, MainActivity.class);
+                in.putExtra("barcode", result.toString());
+                startActivity(in);
             }
         });
         builder.setMessage(scanResult);
