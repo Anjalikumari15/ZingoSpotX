@@ -36,14 +36,22 @@
         android:hint="Enter product name"
         android:id="@+id/product_name"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:padding="5dp"
+        android:text=""/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter Batch no"
+        android:padding="8dp"
         android:id="@+id/batch_no"
         />
     <EditText
         android:layout_width="wrap_content"
+        android:padding="8dp"
         android:layout_height="wrap_content"
         android:hint="Enter Manufacturing date"
         android:id="@+id/mfg_date"
