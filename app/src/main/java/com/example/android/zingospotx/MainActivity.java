@@ -91,6 +91,9 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                     rDetails.setReason("damaged");
                     rDetails.setRetailerId("r1");
                     rDetails.setDistributorId("d1");
+                rDetails.setRet1("");
+                rDetails.setRet2("");
+
                     dbReference.child("Returns").push().setValue(rDetails);
 
                     Toast.makeText(MainActivity.this, "Items added to the cart",
@@ -158,9 +161,23 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 rDetails.setReason("damaged");
                 rDetails.setRetailerId("r1");
                 rDetails.setDistributorId("d1");
+                rDetails.setRet1("");
+                rDetails.setRet2("");
                 dbReference.child("Returns").push().setValue(rDetails);
             }
         });
+
+        //Spinner element
+        Spinner spinner1 = (Spinner)findViewById(R.id.spinner1);
+        spinner1.setOnItemSelectedListener(this);
+        List<String> rea = new ArrayList<>();
+        rea.add("Damaged");
+        rea.add("Expired");
+        //creating adapter for spinner 2
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, rea);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(dataAdapter2);
+
 
 
         // Spinner element

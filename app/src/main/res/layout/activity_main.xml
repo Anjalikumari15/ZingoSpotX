@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:gravity="center_vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/lemon"
     android:orientation="vertical">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:prompt="@string/ChooseRetailers"/>
 
 
@@ -20,60 +24,112 @@
         android:id="@+id/scanbarcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:text="Scan Barcode"/>
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Scan Barcode" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:padding="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textSize="18dp"
         android:id="@+id/tvBarcode"
         android:text = "Barcode"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
         android:hint="Enter product name"
         android:id="@+id/product_name"
         />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="5dp"
-        android:text=""/>
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_marginTop="12dp"
+        />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter Batch no"
-        android:padding="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
         android:id="@+id/batch_no"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_marginTop="12dp"
         />
     <EditText
         android:layout_width="wrap_content"
         android:padding="8dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
         android:hint="Enter Manufacturing date"
         android:id="@+id/mfg_date"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_marginTop="12dp"
         />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter Expiry date"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
         android:id="@+id/exp_date"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_marginTop="12dp"
+        />
     //spinner for reason
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="150dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:padding="20dp"
+        android:prompt="@string/ChooseReason"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter MRP"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
         android:id="@+id/mrp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:padding="8dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="@color/colorPrimary"
         android:id = "@+id/submit"
         android:text = "Submit"
         />
@@ -82,10 +138,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
         android:id = "@+id/addItem"
+        android:padding="8dp"
+        android:onClick="displayToast"
+        android:background="@color/colorPrimary"
         android:text = "Add Item"
         />
 
-
-
 </LinearLayout>
+
+</ScrollView>
