@@ -117,25 +117,20 @@ public class BarcodeActivity extends AppCompatActivity implements ZXingScannerVi
     public void handleResult(final Result result) {
         final String scanResult = result.getText();
         Log.d("pikachu", "handleResult: "+result);
-        FirebaseApp.initializeApp(this);
+        /*FirebaseApp.initializeApp(this);
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance()
                 .getReference().child("note");
         databaseReference.push().setValue(result.toString());
-        Log.d("pikachu", "handleResult: "+databaseReference.getKey());
+        Log.d("pikachu", "handleResult: "+databaseReference.getKey());*/
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Scan Result");
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                scannerView.resumeCameraPreview(BarcodeActivity.this);
-            }
-        });
-        builder.setNeutralButton("Visit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));
-                startActivity(intent);
+                Intent in = new Intent(BarcodeActivity.this, MainActivity.class);
+                in.putExtra("barcode", result.toString());
+                startActivity(in);
             }
         });
         builder.setMessage(scanResult);
