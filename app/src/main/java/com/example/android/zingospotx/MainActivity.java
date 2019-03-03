@@ -91,6 +91,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                     rDetails.setReason("damaged");
                     rDetails.setRetailerId("r1");
                     rDetails.setDistributorId("d1");
+                    if(in.hasExtra("barcode"))
                     dbReference.child("Returns").push().setValue(rDetails);
 
                     Toast.makeText(MainActivity.this, "Items added to the cart",
@@ -158,7 +159,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 rDetails.setReason("damaged");
                 rDetails.setRetailerId("r1");
                 rDetails.setDistributorId("d1");
-                dbReference.child("Returns").push().setValue(rDetails);
+                if(in.hasExtra("barcode"))
+                    dbReference.child("Returns").push().setValue(rDetails);
             }
         });
 
