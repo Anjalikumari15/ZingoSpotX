@@ -38,6 +38,7 @@ import org.json.JSONObject;
 import POJOs.ReturnDetails;
 
 public class MainActivity extends Activity implements OnItemSelectedListener{
+
     Thread t1 = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -49,9 +50,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
-                urlParameters.put("phone", "7503917865");
-                urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
-                Log.d("xyz", "run: message1");
+                urlParameters.put("phone", "917503927865");
+                urlParameters.put("message", URLEncoder.encode("A return with products Axe deo, Bru Instant, Vim, Domex, Lifebuoy sanitizer has been sent to distributor D1 from Retailer R1/nHelpine Number:02239830011","UTF-8"));
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
@@ -83,6 +83,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
             }
         }
     });
+
     Thread t2 = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -94,9 +95,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
-               // urlParameters.put("phone", "8375860629");
-                urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
-              //  Log.d("xyz", "run : A Return with Return ID______, is initiated by retailer _______, to distributor __________, on Date_______.\nFor more information contact 9561278478");
+                urlParameters.put("phone", "919013921377");
+                urlParameters.put("message", URLEncoder.encode("A return with products Axe deo, Bru Instant, Vim, Domex, Lifebuoy sanitizer has been sent to distributor D1 from Retailer R1/nHelpine Number:02239830011","UTF-8"));
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
@@ -128,6 +128,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
             }
         }
     });
+
     Thread t3 = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -139,9 +140,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
-              //  urlParameters.put("phone", "9560213528");
-                urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
-                Log.d("xyz", "run: message3");
+                urlParameters.put("phone", "918630214743");
+                urlParameters.put("message", URLEncoder.encode("A return with products Axe deo, Bru Instant, Vim, Domex, Lifebuoy sanitizer has been sent to distributor D1 from Retailer R1/nHelpine Number:02239830011","UTF-8"));
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
@@ -173,6 +173,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
             }
         }
     });
+
 
     Button b1;
     String item = "";
@@ -233,6 +234,12 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                t1.start();
+                Log.d("abc", "onClick: thread1");
+                t2.start();
+                Log.d("abc", "onClick: thread2");
+                t3.start();
+                Log.d("abc", "onClick: thread3");
                     Log.d("abc", "onClick: has extra");
                     String prodname = prod_name.getText().toString();
                     final String batchno = batch_no.getText().toString();
@@ -286,12 +293,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                     dbReference.child("temp").removeValue();
 
                 }*/
-                t1.start();
-                Log.d("abc", "onClick: thread1");
-                t2.start();
-                Log.d("abc", "onClick: thread2");
-                t3.start();
-                Log.d("abc", "onClick: thread3");
+
             }
         });
         Button btnScan = findViewById(R.id.scanbarcode);
