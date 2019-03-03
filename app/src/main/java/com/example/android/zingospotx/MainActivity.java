@@ -33,6 +33,24 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     Button b1;
     String item = "";
     String extra = "";
+    public void clear(View v) {
+        EditText prod = (EditText)findViewById(R.id.product_name);
+        prod.setText("");
+
+        EditText batch = (EditText)findViewById(R.id.batch_no);
+        batch.setText("");
+
+        EditText mfg = (EditText)findViewById(R.id.mfg_date);
+        mfg.setText("");
+
+        EditText exp = (EditText)findViewById(R.id.exp_date);
+        exp.setText("");
+
+        EditText mrp = (EditText)findViewById(R.id.mrp);
+        mrp.setText("");
+
+
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,6 +196,13 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(dataAdapter2);
 
+        Button addItem = (Button)findViewById(R.id.addItem);
+        addItem.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)  {
+                Toast.makeText(getBaseContext(), "Item added in Returns" , Toast.LENGTH_LONG ).show();
+            }
+        });
+
 
 
         // Spinner element
@@ -224,4 +249,5 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
-}
+
+    }
