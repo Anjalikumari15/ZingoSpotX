@@ -51,7 +51,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
                 urlParameters.put("phone", "917503927865");
-                urlParameters.put("message", URLEncoder.encode("anjali","UTF-8"));
+                urlParameters.put("message", URLEncoder.encode("A return with products Axe deo, Bru Instant, Vim, Domex, Lifebuoy sanitizer has been sent to distributor D1 from Retailer R1/nHelpine Number:02239830011","UTF-8"));
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
@@ -96,7 +96,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
                 urlParameters.put("phone", "919013921377");
-                urlParameters.put("message", URLEncoder.encode("message","UTF-8"));
+                urlParameters.put("message", URLEncoder.encode("A return with products Axe deo, Bru Instant, Vim, Domex, Lifebuoy sanitizer has been sent to distributor D1 from Retailer R1/nHelpine Number:02239830011","UTF-8"));
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
@@ -141,7 +141,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
                 urlParameters.put("phone", "918630214743");
-                urlParameters.put("message", URLEncoder.encode("Anjali","UTF-8"));
+                urlParameters.put("message", URLEncoder.encode("A return with products Axe deo, Bru Instant, Vim, Domex, Lifebuoy sanitizer has been sent to distributor D1 from Retailer R1/nHelpine Number:02239830011","UTF-8"));
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
