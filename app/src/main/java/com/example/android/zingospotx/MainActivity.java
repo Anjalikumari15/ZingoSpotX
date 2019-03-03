@@ -51,7 +51,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("usetype","stage");
                 urlParameters.put("phone", "7503917865");
                 urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
-                //  Log.d("xyz", "run: message1");
+                Log.d("xyz", "run: message1");
                 //urlParameters.put("senderid", senderId);
                 URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
                 // send data
@@ -177,7 +177,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     Button b1;
     String item = "";
     String extra = "";
-    public void clear(View v) {
+    public void clear() {
         EditText prod = (EditText)findViewById(R.id.product_name);
         prod.setText("");
 
@@ -222,6 +222,11 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 
         if(in.hasExtra("barcode")) {
             tvbarcode.setText(in.getStringExtra("barcode"));
+            prod_name.setText("Lifebuoy Sanitizer");
+            batch_no.setText("B104");
+            exp.setText("8/22");
+            mfg.setText("7/18");
+            mrp.setText("34");
         }
 
         Button b = (Button)findViewById(R.id.submit);
@@ -252,11 +257,12 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                     rDetails.setDistributorId("d1");
                     rDetails.setRet1("");
                     rDetails.setRet2("");
-                    if(in.hasExtra("barcode"))
-                    dbReference.child("Returns").push().setValue(rDetails);
-
-                    Toast.makeText(MainActivity.this, "Items added to the cart and notification sent",
-                            Toast.LENGTH_SHORT).show();
+                    if(in.hasExtra("barcode")) {
+                        //dbReference.child("Returns").push().setValue(rDetails);
+                        Toast.makeText(MainActivity.this, "Items added to the cart and notification sent",
+                                Toast.LENGTH_SHORT).show();
+                        clear();
+                    }
 
                 /*if(in.hasExtra("barcode")) {
                     Log.d("abc", "onClick: submit has extra");
@@ -310,7 +316,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 final String mfgdate = mfg.getText().toString();
                 String mrprice = mrp.getText().toString();
 
-                DatabaseReference dbReference = FirebaseDatabase.getInstance()
+                final DatabaseReference dbReference = FirebaseDatabase.getInstance()
                         .getReference();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
                 String currentDateandTime = sdf.format(new Date());
@@ -327,8 +333,25 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 rDetails.setDistributorId("d1");
                 rDetails.setRet1("");
                 rDetails.setRet2("");
-                if(in.hasExtra("barcode"))
+                if(in.hasExtra("barcode")) {
                     dbReference.child("Returns").push().setValue(rDetails);
+                    Toast.makeText(MainActivity.this, "Items added to the cart!", Toast.LENGTH_SHORT).show();
+                    clear();
+                    dbReference.child("Returns").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                                dbReference.child("Returns")
+                                        .child(dataSnapshot1.getKey()).setValue("1");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
             }
         });
 
