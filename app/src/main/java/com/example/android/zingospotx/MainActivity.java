@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
-              //  urlParameters.put("phone", "7503917865");
+                urlParameters.put("phone", "7503917865");
                 urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
                 //  Log.d("xyz", "run: message1");
                 //urlParameters.put("senderid", senderId);
@@ -94,7 +94,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
-                urlParameters.put("phone", "7503917865");
+               // urlParameters.put("phone", "8375860629");
                 urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
               //  Log.d("xyz", "run : A Return with Return ID______, is initiated by retailer _______, to distributor __________, on Date_______.\nFor more information contact 9561278478");
                 //urlParameters.put("senderid", senderId);
@@ -139,7 +139,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
                 urlParameters.put("secret","QHH6V8VY1GNLX1X3");
                 urlParameters.put("usetype","stage");
-                urlParameters.put("phone", "7503917865");
+              //  urlParameters.put("phone", "9560213528");
                 urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
                 Log.d("xyz", "run: message3");
                 //urlParameters.put("senderid", senderId);
