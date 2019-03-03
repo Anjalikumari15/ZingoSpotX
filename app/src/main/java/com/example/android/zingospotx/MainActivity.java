@@ -309,7 +309,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
             @Override
             public void onClick(View view) {
 
-                Log.d("abc", "onClick: pikachu"+in.hasExtra("barcode"));
+                Log.d("abc", "onClick: "+in.hasExtra("barcode"));
                 String prodname = prod_name.getText().toString();
                 final String batchno = batch_no.getText().toString();
                 final String expdate = exp.getText().toString();
@@ -334,15 +334,14 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 rDetails.setRet1("");
                 rDetails.setRet2("");
                 if(in.hasExtra("barcode")) {
-                    dbReference.child("Returns").push().setValue(rDetails);
+                    //dbReference.child("Returns").push().setValue(rDetails);
                     Toast.makeText(MainActivity.this, "Items added to the cart!", Toast.LENGTH_SHORT).show();
                     clear();
-                    dbReference.child("Returns").addListenerForSingleValueEvent(new ValueEventListener() {
+                    /*dbReference.child("Returns").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                                dbReference.child("Returns")
-                                        .child(dataSnapshot1.getKey()).setValue("1");
+                                //dbReference.child("Returns").child(dataSnapshot1.getKey()).setValue("1");
                             }
                         }
 
@@ -350,7 +349,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
+                    });*/
                 }
             }
         });
