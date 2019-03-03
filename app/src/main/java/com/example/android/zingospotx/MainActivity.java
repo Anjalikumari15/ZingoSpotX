@@ -302,6 +302,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Log.d("abc", "onClick: pikachu"+in.hasExtra("barcode"));
                 String prodname = prod_name.getText().toString();
                 final String batchno = batch_no.getText().toString();
                 final String expdate = exp.getText().toString();
@@ -342,12 +344,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(dataAdapter2);
 
-        Button addItem = (Button)findViewById(R.id.addItem);
-        addItem.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)  {
-                Toast.makeText(getBaseContext(), "Item added in Returns" , Toast.LENGTH_LONG ).show();
-            }
-        });
 
 
 

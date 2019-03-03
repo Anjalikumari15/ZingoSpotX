@@ -165,7 +165,6 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:id = "@+id/addItem"
-        android:onClick="clear"
         android:padding="8dp"
         android:background="@color/light"
         android:text = "Add Item"
