@@ -1,5 +1,11 @@
 package com.example.android.zingospotx;;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,12 +33,168 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONObject;
+
 import POJOs.ReturnDetails;
 
 public class MainActivity extends Activity implements OnItemSelectedListener{
+    Thread t1 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            StringBuilder content = new StringBuilder();
+            try{
+                // construct data
+
+                JSONObject urlParameters = new JSONObject();
+                urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
+                urlParameters.put("secret","QHH6V8VY1GNLX1X3");
+                urlParameters.put("usetype","stage");
+              //  urlParameters.put("phone", "7503917865");
+                urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
+                //  Log.d("xyz", "run: message1");
+                //urlParameters.put("senderid", senderId);
+                URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
+                // send data
+                HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
+                httpConnection.setDoOutput(true);
+                httpConnection.setRequestMethod("POST");
+                DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
+                wr.write(urlParameters.toString().getBytes());
+                // get the response
+                BufferedReader bufferedReader = null;
+                if (httpConnection.getResponseCode() == 200) {
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
+                } else {
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getErrorStream()));
+                }
+
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+
+                bufferedReader.close();
+                String str = content.toString();
+                Log.d("abc", "sendCampaigns: " + str);
+            }catch(Exception ex){
+                // System.out.println("Exception at:",ex);
+                Log.d("abc", "sendCampaigns: error "+ ex);
+
+            }
+        }
+    });
+    Thread t2 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            StringBuilder content = new StringBuilder();
+            try{
+                // construct data
+
+                JSONObject urlParameters = new JSONObject();
+                urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
+                urlParameters.put("secret","QHH6V8VY1GNLX1X3");
+                urlParameters.put("usetype","stage");
+                urlParameters.put("phone", "7503917865");
+                urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
+              //  Log.d("xyz", "run : A Return with Return ID______, is initiated by retailer _______, to distributor __________, on Date_______.\nFor more information contact 9561278478");
+                //urlParameters.put("senderid", senderId);
+                URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
+                // send data
+                HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
+                httpConnection.setDoOutput(true);
+                httpConnection.setRequestMethod("POST");
+                DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
+                wr.write(urlParameters.toString().getBytes());
+                // get the response
+                BufferedReader bufferedReader = null;
+                if (httpConnection.getResponseCode() == 200) {
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
+                } else {
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getErrorStream()));
+                }
+
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+
+                bufferedReader.close();
+                String str = content.toString();
+                Log.d("abc", "sendCampaigns: " + str);
+            }catch(Exception ex){
+                // System.out.println("Exception at:",ex);
+                Log.d("abc", "sendCampaigns: error "+ ex);
+
+            }
+        }
+    });
+    Thread t3 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            StringBuilder content = new StringBuilder();
+            try{
+                // construct data
+
+                JSONObject urlParameters = new JSONObject();
+                urlParameters.put("apikey","EEILC1D86MSS75XR6T4055QBSE8KI1Z7");
+                urlParameters.put("secret","QHH6V8VY1GNLX1X3");
+                urlParameters.put("usetype","stage");
+                urlParameters.put("phone", "7503917865");
+                urlParameters.put("message", URLEncoder.encode("A Return with Return ID -L_-hBHwrzQfkodviRul, is initiated by retailer R1, to distributor D1, on 20190303_021505.\nFor more information contact 9561278478","UTF-8"));
+                Log.d("xyz", "run: message3");
+                //urlParameters.put("senderid", senderId);
+                URL obj = new URL("http://www.way2sms.com/api/v1/sendCampaign");
+                // send data
+                HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
+                httpConnection.setDoOutput(true);
+                httpConnection.setRequestMethod("POST");
+                DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
+                wr.write(urlParameters.toString().getBytes());
+                // get the response
+                BufferedReader bufferedReader = null;
+                if (httpConnection.getResponseCode() == 200) {
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
+                } else {
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getErrorStream()));
+                }
+
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+
+                bufferedReader.close();
+                String str = content.toString();
+                Log.d("abc", "sendCampaigns: " + str);
+            }catch(Exception ex){
+                // System.out.println("Exception at:",ex);
+                Log.d("abc", "sendCampaigns: error "+ ex);
+
+            }
+        }
+    });
+
     Button b1;
     String item = "";
     String extra = "";
+    public void clear(View v) {
+        EditText prod = (EditText)findViewById(R.id.product_name);
+        prod.setText("");
+
+        EditText batch = (EditText)findViewById(R.id.batch_no);
+        batch.setText("");
+
+        EditText mfg = (EditText)findViewById(R.id.mfg_date);
+        mfg.setText("");
+
+        EditText exp = (EditText)findViewById(R.id.exp_date);
+        exp.setText("");
+
+        EditText mrp = (EditText)findViewById(R.id.mrp);
+        mrp.setText("");
+
+
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +224,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
             tvbarcode.setText(in.getStringExtra("barcode"));
         }
 
-
-
-
         Button b = (Button)findViewById(R.id.submit);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,10 +250,12 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                     rDetails.setReason("damaged");
                     rDetails.setRetailerId("r1");
                     rDetails.setDistributorId("d1");
+                    rDetails.setRet1("");
+                    rDetails.setRet2("");
                     if(in.hasExtra("barcode"))
                     dbReference.child("Returns").push().setValue(rDetails);
 
-                    Toast.makeText(MainActivity.this, "Items added to the cart",
+                    Toast.makeText(MainActivity.this, "Items added to the cart and notification sent",
                             Toast.LENGTH_SHORT).show();
 
                 /*if(in.hasExtra("barcode")) {
@@ -119,11 +280,14 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                     dbReference.child("temp").removeValue();
 
                 }*/
-
+                t1.start();
+                Log.d("abc", "onClick: thread1");
+                t2.start();
+                Log.d("abc", "onClick: thread2");
+                t3.start();
+                Log.d("abc", "onClick: thread3");
             }
-
         });
-
         Button btnScan = findViewById(R.id.scanbarcode);
         btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,10 +323,32 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
                 rDetails.setReason("damaged");
                 rDetails.setRetailerId("r1");
                 rDetails.setDistributorId("d1");
+                rDetails.setRet1("");
+                rDetails.setRet2("");
                 if(in.hasExtra("barcode"))
                     dbReference.child("Returns").push().setValue(rDetails);
             }
         });
+
+        //Spinner element
+        Spinner spinner1 = (Spinner)findViewById(R.id.spinner1);
+        spinner1.setOnItemSelectedListener(this);
+        List<String> rea = new ArrayList<>();
+        rea.add("Reason of return");
+        rea.add("Damaged");
+        rea.add("Expired");
+        //creating adapter for spinner 2
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, rea);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(dataAdapter2);
+
+        Button addItem = (Button)findViewById(R.id.addItem);
+        addItem.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)  {
+                Toast.makeText(getBaseContext(), "Item added in Returns" , Toast.LENGTH_LONG ).show();
+            }
+        });
+
 
 
         // Spinner element
@@ -192,8 +378,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -202,11 +388,11 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 
         // Showing selected spinner item
 
-
-
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+       // if(item.equals("Choose Retailers")==true || item.equals("Reason of return")==true)
+      //  Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
-}
+
+    }
