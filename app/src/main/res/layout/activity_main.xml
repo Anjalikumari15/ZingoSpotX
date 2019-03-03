@@ -141,7 +141,6 @@
         android:layout_gravity="center_horizontal"
         android:id = "@+id/addItem"
         android:padding="8dp"
-        android:onClick="displayToast"
         android:background="@color/colorPrimary"
         android:text = "Add Item"
         />
